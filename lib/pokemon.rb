@@ -22,8 +22,7 @@ class Pokemon
       SELECT * FROM pokemon WHERE id = ?
     SQL
     
-    db.execute(sql, id).map do |row|
-      self.new(row[1], row[2], db, row[0])
-    end.first
+    pokemon = db.execute(sql, [id]).flatten
+    Pokemon.new(pokemon[1], pokemon[2], db, id)
   end
 end

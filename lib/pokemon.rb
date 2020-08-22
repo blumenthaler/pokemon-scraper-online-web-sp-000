@@ -15,6 +15,6 @@ class Pokemon
     SQL
     
     DB[:conn].execute(sql, name, type)
-    @id = DB[:conn].execute("")
+    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
   end
 end
